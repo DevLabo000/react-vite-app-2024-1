@@ -10,3 +10,10 @@ export const fetcher = async <T, V>(key: string, params?: V): Promise<T> => {
   });
   return response.data;
 };
+
+export const todoPost = async <T, V>(key: string, params?: V): Promise<T> => {
+  const response = await axiosClient.post<T>(key, {
+    ...params,
+  });
+  return response.data;
+};

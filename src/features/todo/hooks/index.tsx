@@ -1,6 +1,7 @@
 import useSWR from 'swr';
+import useSWRMutation from 'swr/mutation';
 import { AxiosError } from 'axios';
-import { fetcher } from '@/lib/api/client';
+import { fetcher, todoPost } from '@/lib/api/client';
 import { TodoType } from '../types';
 
 export const useTodoFetcher = <T, V>() => {
@@ -9,4 +10,13 @@ export const useTodoFetcher = <T, V>() => {
     fetcher,
   );
   return { data, error, isLoading };
+};
+
+export const useTodoPost = () => {
+  const { trigger, isMutating } = useSWRMutation(
+    '/todos',
+    (key, { arg }: { arg: TodoType }) => todoPost(key, arg),
+  );
+
+  return { trigger, isMutating };
 };
