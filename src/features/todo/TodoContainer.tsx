@@ -8,8 +8,10 @@ import {
 import { todoFormSchema } from './schema';
 import { TodoFormType } from './types';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTodoFetcher } from './hooks';
 
 export function TodoContainer() {
+  const fetcher = useTodoFetcher();
   const form = useForm<TodoFormType>({
     resolver: zodResolver(todoFormSchema),
     defaultValues: {
@@ -22,9 +24,10 @@ export function TodoContainer() {
     form.reset();
   };
 
+  console.log('fetcher', fetcher);
   return (
     <FormProvider {...form}>
-      <TodoPresenter handleClickSubmit={handleClickSubmit} />
+      <TodoPresenter handleClickSubmit={handleClickSubmit} fetcher={fetcher} />
     </FormProvider>
   );
 }

@@ -1,0 +1,6 @@
+{
+  "todos": [
+    { "id": 1, "taskname": "買い物に行く", "nice": false },
+    { "id": 1, "taskname": "勉強する", "nice": true }
+  ]
+}
