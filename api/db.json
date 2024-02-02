@@ -2,37 +2,7 @@
   "todos": [
     {
       "id": 1,
-      "taskname": "買い物に行く",
-      "nice": false
-    },
-    {
-      "id": 2,
-      "taskname": "勉強する",
-      "nice": true
-    },
-    {
-      "id": 3,
-      "taskname": "a",
-      "nice": false
-    },
-    {
-      "id": 4,
-      "taskname": "b",
-      "nice": false
-    },
-    {
-      "id": 5,
-      "taskname": "sss",
-      "nice": false
-    },
-    {
-      "id": 6,
-      "taskname": "aaaaa",
-      "nice": false
-    },
-    {
-      "id": 7,
-      "taskname": "aaaa",
+      "taskname": "SEED FREEDOMを見に行く",
       "nice": false
     }
   ]

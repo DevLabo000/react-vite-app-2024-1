@@ -17,3 +17,8 @@ export const todoPost = async <T, V>(key: string, params?: V): Promise<T> => {
   });
   return response.data;
 };
+
+export const deleter = async <T>(key: string, id: number): Promise<T> => {
+  const response = await axiosClient.delete<T>(`${key}/${id}`);
+  return response.data;
+};

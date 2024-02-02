@@ -8,3 +8,7 @@ export type TodoType = {
   taskname: string;
   nice: boolean;
 };
+
+export type TodoDeleteParamType = {
+  id: number;
+};

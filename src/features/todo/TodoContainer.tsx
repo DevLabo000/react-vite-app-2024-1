@@ -23,7 +23,9 @@ export function TodoContainer() {
   const handleClickSubmit: SubmitHandler<FieldValues> = async (data) => {
     if (!fetcher.data) return;
     const todoIdList = fetcher.data.map((todo) => todo.id);
-    const maxTodoId = Math.max(...todoIdList) + 1;
+    const maxTodoId = todoIdList.length + 1;
+    console.log('todoIdList', todoIdList);
+    console.log('maxTodoId', maxTodoId);
     await post.trigger({
       id: maxTodoId,
       taskname: data.taskname,
