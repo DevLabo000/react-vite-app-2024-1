@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { TodoType } from '@/features/todo/types';
 
 const axiosClient = axios.create({
   baseURL: 'http://localhost:3000',
@@ -20,5 +21,15 @@ export const todoPost = async <T, V>(key: string, params?: V): Promise<T> => {
 
 export const deleter = async <T>(key: string, id: number): Promise<T> => {
   const response = await axiosClient.delete<T>(`${key}/${id}`);
+  return response.data;
+};
+
+export const todoUpdate = async <T>(
+  key: string,
+  params: TodoType,
+): Promise<T> => {
+  const response = await axiosClient.put<T>(`${key}/${params.id}`, {
+    ...params,
+  });
   return response.data;
 };
