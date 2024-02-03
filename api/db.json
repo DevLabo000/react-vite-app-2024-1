@@ -1,14 +1,3 @@
 {
-  "todos": [
-    {
-      "id": 1,
-      "taskname": "SEED FREEDOMを見に行く",
-      "nice": true
-    },
-    {
-      "id": 2,
-      "taskname": "aaaa",
-      "nice": false
-    }
-  ]
+  "todos": []
 }

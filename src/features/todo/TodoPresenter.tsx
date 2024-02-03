@@ -8,13 +8,17 @@ import {
   FormLabel,
   FormMessage,
 } from '@/components/ui/form';
-import { useFormContext, SubmitHandler, FieldValues } from 'react-hook-form';
+import { useFormContext } from 'react-hook-form';
 import { TodoCardContainer } from './components/TodoCard';
 import { TodoType } from './types';
 import { AxiosError } from 'axios';
+import { TodoFormType } from './types';
 
+/**
+ * TODOコンポーネント Props定義
+ */
 type TodoPresenterProps = {
-  handleClickSubmit: SubmitHandler<FieldValues>;
+  onSubmit: (data: TodoFormType) => void;
   fetcher: {
     data: TodoType[] | undefined;
     error: AxiosError<unknown, unknown> | undefined;
@@ -22,15 +26,21 @@ type TodoPresenterProps = {
   };
 };
 
+/**
+ * TODOコンポーネント プレゼンテーション層
+ * @summary 表示を提供する。
+ * @param props
+ * @returns
+ */
 export function TodoPresenter(props: TodoPresenterProps) {
-  const { handleClickSubmit, fetcher } = props;
-  const form = useFormContext();
+  const { onSubmit, fetcher } = props;
+  const form = useFormContext<TodoFormType>();
 
   return (
     <div className="flex-col">
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(handleClickSubmit)}
+          onSubmit={form.handleSubmit(onSubmit)}
           className="flex justify-center space-y-8"
         >
           <FormField
@@ -41,7 +51,7 @@ export function TodoPresenter(props: TodoPresenterProps) {
                 <FormLabel>タスク名</FormLabel>
                 <FormControl>
                   <Input
-                    placeholder="seed freedomを見に行く"
+                    placeholder="タスクを入力してください。"
                     {...field}
                     className="w-64"
                   />
@@ -50,8 +60,12 @@ export function TodoPresenter(props: TodoPresenterProps) {
               </FormItem>
             )}
           />
-          <Button type="submit" className="ml-2">
-            Submit
+          <Button
+            type="submit"
+            className="ml-2"
+            disabled={!form.formState.isValid || form.formState.isValidating}
+          >
+            登録
           </Button>
         </form>
       </Form>

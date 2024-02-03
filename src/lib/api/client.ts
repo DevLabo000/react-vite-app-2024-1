@@ -1,8 +1,12 @@
 import axios from 'axios';
 import { TodoType } from '@/features/todo/types';
 
+/**
+ * Axiosクライアント定義
+ * @summary APIのURLなどを定義
+ */
 const axiosClient = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: import.meta.env.VITE_BASE_URL,
 });
 
 export const fetcher = async <T, V>(key: string, params?: V): Promise<T> => {

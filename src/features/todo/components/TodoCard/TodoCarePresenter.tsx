@@ -3,6 +3,9 @@ import { Button } from '@/components/ui/button';
 import { TodoType } from '../../types';
 import { FaHeart } from 'react-icons/fa';
 
+/**
+ * TODOカードコンポーネント Props定義
+ */
 type TodoCarePresenterProps = {
   id: number;
   taskname: string;
@@ -11,6 +14,11 @@ type TodoCarePresenterProps = {
   handleClickUpdate: (value: TodoType) => void;
 };
 
+/**
+ * TODOカードコンポーネント プレゼンテーション層
+ * @summary 表示を提供する。
+ * @returns
+ */
 export function TodoCarePresenter(props: TodoCarePresenterProps) {
   const { id, taskname, nice, handleClickDelete, handleClickUpdate } = props;
   return (
