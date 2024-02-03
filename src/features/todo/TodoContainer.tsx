@@ -30,11 +30,16 @@ export function TodoContainer() {
     if (!fetcher.data) return;
     const todoIdList = fetcher.data.map((todo) => todo.id);
     const maxTodoId = todoIdList.length + 1;
-    await post.trigger({
-      id: maxTodoId,
-      taskname: data.taskname,
-      nice: false,
-    });
+
+    try {
+      await post.trigger({
+        id: maxTodoId,
+        taskname: data.taskname,
+        nice: false,
+      });
+    } catch (e) {
+      console.log(e);
+    }
     form.reset();
   };
 
